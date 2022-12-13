@@ -1,0 +1,97 @@
+var map = L.map('map', {
+center: [-17.987408, -70.235980],
+zoom: 17,
+minZoom: 0.5,
+maxZoom: 18,
+});
+L.control.scale().addTo(map);
+
+var basemapOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <ahref="http://osm.org/copyright"> OpenStreetMap</a> contributor'
+});
+basemapOSM.addTo(map);
+
+var Manzaneo = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:MANZANASS", //gisweb:Manzanas
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"}),
+Plaza = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:plazas_2", //gisweb:Plaza
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"}),
+Sencico = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:sencico", //gisweb:Sencico
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"})
+Lotizacion = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:lotes", //gisweb:Lotizacion
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"})
+var Veredas = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:veredas_2", //gisweb:veredas
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+;
+
+var Ver_jar = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:ver_jar", //gisweb:ver_jar
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+Ver_jar.addTo(map);
+
+var Arbol = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:arbol", //gisweb:arbol
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+Arbol.addTo(map);
+
+var jardinel = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:jardinel", //gisweb:jardinel
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+jardinel.addTo(map);
+
+var postes = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
+layers: "Proyecto_Ciudad_Nueva:postes", //gisweb:postes
+format: 'image/png',
+transparent: true,
+version: '1.1.1',
+attribution: "SENCICO"
+});
+postes.addTo(map);
+
+var baseMaps = {
+"OSM": basemapOSM
+};
+var overlayMaps = {
+"Manzaneo": Manzaneo,
+"Lotizacion": Lotizacion,
+"Sencico": Sencico,
+"Plaza": Plaza,
+"Veredas":Veredas,
+"Arbol": Arbol,
+"Postes": postes
+};
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
