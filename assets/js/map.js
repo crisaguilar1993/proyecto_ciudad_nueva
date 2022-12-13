@@ -60,7 +60,6 @@ transparent: true,
 version: '1.1.1',
 attribution: "SENCICO"
 });
-Arbol.addTo(map);
 
 var jardinel = L.tileLayer.wms("http://localhost:8080/geoserver/Proyecto_Ciudad_Nueva/wms?", {
 layers: "Proyecto_Ciudad_Nueva:jardinel", //gisweb:jardinel
@@ -78,7 +77,6 @@ transparent: true,
 version: '1.1.1',
 attribution: "SENCICO"
 });
-postes.addTo(map);
 
 var baseMaps = {
 "OSM": basemapOSM
